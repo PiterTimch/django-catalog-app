@@ -12,12 +12,17 @@ python -m uv run python create_db.py
 python -m uv run python manage.py migrate
 ```
 
-3. Create superuser:
+3. Seed data:
+```
+python -m uv run python seeding/seed.py
+```
+
+4. Create superuser:
 ```
 python -m uv run python manage.py createsuperuser
 ```
 
-4. Run server:
+5. Run server:
 ```
 python -m uv run python manage.py runserver
 ```
