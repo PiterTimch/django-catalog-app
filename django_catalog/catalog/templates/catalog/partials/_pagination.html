@@ -1,0 +1,17 @@
+<div class="pagination">
+    {% if products.has_previous %}
+        <a href="?page={{ products.previous_page_number }}{% if selected_category %}&category={{ selected_category }}{% endif %}{% if per_page %}&per_page={{ per_page }}{% endif %}" class="pagination-link">&laquo;</a>
+    {% endif %}
+
+    {% for num in products.paginator.page_range %}
+        {% if products.number == num %}
+            <span class="pagination-link pagination-link--active">{{ num }}</span>
+        {% else %}
+            <a href="?page={{ num }}{% if selected_category %}&category={{ selected_category }}{% endif %}{% if per_page %}&per_page={{ per_page }}{% endif %}" class="pagination-link">{{ num }}</a>
+        {% endif %}
+    {% endfor %}
+
+    {% if products.has_next %}
+        <a href="?page={{ products.next_page_number }}{% if selected_category %}&category={{ selected_category }}{% endif %}{% if per_page %}&per_page={{ per_page }}{% endif %}" class="pagination-link">&raquo;</a>
+    {% endif %}
+</div>

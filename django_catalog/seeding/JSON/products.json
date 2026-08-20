@@ -1,0 +1,50 @@
+[
+  {
+    "name": "Acer Aspire 5",
+    "slug": "acer-aspire-5",
+    "category_slug": "laptops",
+    "description": "Powerful everyday laptop with AMD Ryzen processor.",
+    "price": 599.99,
+    "image_name": "aceraspire5.jpg"
+  },
+  {
+    "name": "iPhone 17",
+    "slug": "iphone-17",
+    "category_slug": "smartphones",
+    "description": "The next generation of iPhone.",
+    "price": 1099.99,
+    "image_name": "iphone17.jpg"
+  },
+  {
+    "name": "MacBook",
+    "slug": "macbook",
+    "category_slug": "laptops",
+    "description": "Sleek and efficient Apple MacBook.",
+    "price": 1299.99,
+    "image_name": "macbook.jpg"
+  },
+  {
+    "name": "Nvidia GeForce RTX 5090",
+    "slug": "nvidia-geforce-rtx-5090",
+    "category_slug": "graphics-cards",
+    "description": "Flagship next-gen gaming graphics card.",
+    "price": 1999.99,
+    "image_name": "rtx5090.jpg"
+  },
+  {
+    "name": "AMD Radeon RX 9070",
+    "slug": "amd-radeon-rx-9070",
+    "category_slug": "graphics-cards",
+    "description": "High-performance graphics card for gaming.",
+    "price": 899.99,
+    "image_name": "rx9070.jpg"
+  },
+  {
+    "name": "Samsung Galaxy S26",
+    "slug": "samsung-galaxy-s26",
+    "category_slug": "smartphones",
+    "description": "Flagship Samsung smartphone with advanced camera system.",
+    "price": 949.99,
+    "image_name": "samsungs26.jpg"
+  }
+]

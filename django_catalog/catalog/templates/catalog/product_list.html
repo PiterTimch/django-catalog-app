@@ -1,0 +1,17 @@
+{% extends "catalog/base.html" %}
+
+{% block content %}
+    {% include "catalog/partials/_filters.html" %}
+
+    <div class="products-grid">
+        {% for product in products %}
+            {% include "catalog/partials/_product_card.html" with product=product %}
+        {% empty %}
+            <p class="no-products">Товарів не знайдено.</p>
+        {% endfor %}
+    </div>
+
+    {% if products.has_other_pages %}
+        {% include "catalog/partials/_pagination.html" %}
+    {% endif %}
+{% endblock %}
