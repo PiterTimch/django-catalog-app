@@ -36,3 +36,7 @@ def product_list(request):
 def product_detail(request, slug):
     product = get_object_or_404(Product.objects.select_related("category"), slug=slug)
     return render(request, "catalog/product_detail.html", {"product": product})
+
+
+def custom_page_not_found(request, exception):
+    return render(request, "404.html", status=404)
