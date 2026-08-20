@@ -1,0 +1,29 @@
+{% extends "catalog/base.html" %}
+
+{% block title %}{{ product.name }} - Каталог{% endblock %}
+
+{% block content %}
+<div class="back-link-container">
+    <a href="{% url 'catalog:product_list' %}" class="back-link">&larr; Назад до каталогу</a>
+</div>
+
+<div class="product-detail">
+    <div class="product-detail__image-container">
+        {% if product.image %}
+            <img class="product-detail__image" src="{{ product.image.url }}" alt="{{ product.name }}">
+        {% else %}
+            <div class="product-detail__no-image">Немає фото</div>
+        {% endif %}
+    </div>
+
+    <div class="product-detail__info">
+        <p class="product-detail__category">{{ product.category.name }}</p>
+        <h1 class="product-detail__name">{{ product.name }}</h1>
+        <p class="product-detail__price">{{ product.price }} $</p>
+        <div class="product-detail__description">
+            <p>{{ product.description }}</p>
+        </div>
+        <button class="add-to-cart-btn">Add to cart</button>
+    </div>
+</div>
+{% endblock %}

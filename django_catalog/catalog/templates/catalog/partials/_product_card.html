@@ -1,12 +1,16 @@
 <div class="product-card">
-    {% if product.image %}
-        <img class="product-card__image" src="{{ product.image.url }}" alt="{{ product.name }}">
-    {% else %}
-        <div class="product-card__no-image">Немає фото</div>
-    {% endif %}
+    <a href="{% url 'catalog:product_detail' product.slug %}">
+        {% if product.image %}
+            <img class="product-card__image" src="{{ product.image.url }}" alt="{{ product.name }}">
+        {% else %}
+            <div class="product-card__no-image">Немає фото</div>
+        {% endif %}
+    </a>
     <div class="product-card__body">
         <p class="product-card__category">{{ product.category.name }}</p>
-        <h2 class="product-card__name">{{ product.name }}</h2>
+        <h2 class="product-card__name">
+            <a href="{% url 'catalog:product_detail' product.slug %}" class="product-card__link">{{ product.name }}</a>
+        </h2>
         <p class="product-card__price">{{ product.price }} $</p>
     </div>
 </div>
