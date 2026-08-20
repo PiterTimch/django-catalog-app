@@ -1,0 +1,23 @@
+<div class="filters-container">
+    <div class="filters">
+        <a href="?{% if per_page %}per_page={{ per_page }}{% endif %}" class="filter-btn {% if not selected_category %}filter-btn--active{% endif %}">Всі</a>
+        {% for cat in categories %}
+            <a href="?category={{ cat.slug }}{% if per_page %}&per_page={{ per_page }}{% endif %}"
+               class="filter-btn {% if selected_category == cat.slug %}filter-btn--active{% endif %}">
+                {{ cat.name }}
+            </a>
+        {% endfor %}
+    </div>
+
+    <form method="get" class="per-page-form">
+        {% if selected_category %}
+            <input type="hidden" name="category" value="{{ selected_category }}">
+        {% endif %}
+        <label for="per_page">Товарів на сторінці:</label>
+        <select name="per_page" id="per_page" onchange="this.form.submit()">
+            {% for option in per_page_options %}
+                <option value="{{ option }}" {% if per_page == option %}selected{% endif %}>{{ option }}</option>
+            {% endfor %}
+        </select>
+    </form>
+</div>
