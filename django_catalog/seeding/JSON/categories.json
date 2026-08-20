@@ -1,0 +1,14 @@
+[
+  {
+    "name": "Smartphones",
+    "slug": "smartphones"
+  },
+  {
+    "name": "Laptops",
+    "slug": "laptops"
+  },
+  {
+    "name": "Graphics Cards",
+    "slug": "graphics-cards"
+  }
+]
