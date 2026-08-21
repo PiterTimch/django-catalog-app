@@ -12,5 +12,9 @@
             <a href="{% url 'catalog:product_detail' product.slug %}" class="product-card__link">{{ product.name }}</a>
         </h2>
         <p class="product-card__price">{{ product.price }} $</p>
+        <form action="{% url 'cart:cart_add' product.id %}" method="post" style="margin-top: 10px;">
+            {% csrf_token %}
+            <button type="submit" class="btn-update" style="width: 100%;">В кошик</button>
+        </form>
     </div>
 </div>

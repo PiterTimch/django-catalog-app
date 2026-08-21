@@ -23,7 +23,12 @@
         <div class="product-detail__description">
             <p>{{ product.description }}</p>
         </div>
-        <button class="add-to-cart-btn">Add to cart</button>
+
+        <form action="{% url 'cart:cart_add' product.id %}" method="post" class="cart-qty-form">
+            {% csrf_token %}
+            <input type="number" name="quantity" value="1" min="1" class="cart-qty-input">
+            <button type="submit" class="add-to-cart-btn">Додати в кошик</button>
+        </form>
     </div>
 </div>
 {% endblock %}
