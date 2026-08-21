@@ -43,8 +43,10 @@ def get_custom_elided_page_range(paginator, number, on_each_side=1, on_ends=1):
 
 
 def product_list(request):
-    categories = Category.objects.all()
     category_slug = request.GET.get("category")
+
+    cat_paginator = Paginator(Category.objects.all(), 5)
+    categories_page = cat_paginator.get_page(request.GET.get("cat_page", 1))
 
     try:
         per_page = int(request.GET.get("per_page", DEFAULT_PER_PAGE))
@@ -62,12 +64,13 @@ def product_list(request):
     page_range = get_custom_elided_page_range(paginator, page.number, on_each_side=1, on_ends=1)
 
     return render(request, "catalog/product_list.html", {
-        "categories": categories,
-        "products": page,
-        "page_range": page_range,
+        "categories": categories_page.object_list,
+        "categories_page": categories_page,
         "selected_category": category_slug,
         "per_page": per_page,
         "per_page_options": PER_PAGE_OPTIONS,
+        "products": page,
+        "page_range": page_range,
     })
 
 
