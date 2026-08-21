@@ -91,8 +91,6 @@ TIME_ZONE = 'UTC'
 USE_I18N = True
 USE_TZ = True
 
-FORCE_SCRIPT_NAME = os.getenv('FORCE_SCRIPT_NAME', '')
-
 STATIC_URL = 'static/'
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 

@@ -39,12 +39,11 @@ services:
       DB_HOST: db
       DB_PORT: 5432
       ALLOWED_HOSTS: ${ALLOWED_HOSTS}
-      FORCE_SCRIPT_NAME: ${FORCE_SCRIPT_NAME}
+      DJANGO_SUPERUSER_USERNAME: ${DJANGO_SUPERUSER_USERNAME}
+      DJANGO_SUPERUSER_EMAIL: ${DJANGO_SUPERUSER_EMAIL}
+      DJANGO_SUPERUSER_PASSWORD: ${DJANGO_SUPERUSER_PASSWORD}
     volumes:
       - media_data:/app/media
-    command: >
-      sh -c ".venv/bin/python manage.py migrate --noinput &&
-             gunicorn config.wsgi:application --bind 0.0.0.0:8000"
     depends_on:
       - db
     networks:
