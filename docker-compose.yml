@@ -1,0 +1,50 @@
+version: "3.9"
+
+networks:
+  catalog_net:
+    driver: bridge
+
+volumes:
+  postgres_data:
+  media_data:
+
+services:
+  db:
+    image: postgres:17
+    container_name: catalog-db
+    restart: unless-stopped
+    ports:
+      - "${POSTGRES_EXTERNAL_PORT}:5432"
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - catalog_net
+
+  web:
+    image: pedro007salo/django-catalog-app:latest
+    container_name: catalog-web
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:${WEB_PORT}:8000"
+    environment:
+      SECRET_KEY: ${SECRET_KEY}
+      DEBUG: ${DEBUG}
+      DB_NAME: ${POSTGRES_DB}
+      DB_USER: ${POSTGRES_USER}
+      DB_PASSWORD: ${POSTGRES_PASSWORD}
+      DB_HOST: db
+      DB_PORT: 5432
+      ALLOWED_HOSTS: ${ALLOWED_HOSTS}
+      DJANGO_SUPERUSER_USERNAME: ${DJANGO_SUPERUSER_USERNAME}
+      DJANGO_SUPERUSER_EMAIL: ${DJANGO_SUPERUSER_EMAIL}
+      DJANGO_SUPERUSER_PASSWORD: ${DJANGO_SUPERUSER_PASSWORD}
+    volumes:
+      - media_data:/app/media
+    depends_on:
+      - db
+    networks:
+      - catalog_net

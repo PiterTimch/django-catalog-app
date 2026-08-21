@@ -38,7 +38,7 @@ def seed_products():
                     "price": data["price"],
                 },
             )
-            if created:
+            if created or not product.image:
                 img_path = SEEDING_DIR / "images" / data["image_name"]
                 if img_path.exists():
                     with open(img_path, "rb") as img_file:
