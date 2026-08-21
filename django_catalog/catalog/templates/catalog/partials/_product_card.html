@@ -1,3 +1,4 @@
+{% load cart_tags %}
 <div class="product-card">
     <a href="{% url 'catalog:product_detail' product.slug %}">
         {% if product.image %}
@@ -12,5 +13,16 @@
             <a href="{% url 'catalog:product_detail' product.slug %}" class="product-card__link">{{ product.name }}</a>
         </h2>
         <p class="product-card__price">{{ product.price }} $</p>
+
+        {% with qty=cart|get_cart_quantity:product %}
+            {% if qty > 0 %}
+                <span class="in-cart-indicator">✓ В кошику ({{ qty }} шт.)</span>
+            {% endif %}
+        {% endwith %}
+
+        <form action="{% url 'cart:cart_add' product.id %}" method="post" style="margin-top: auto;">
+            {% csrf_token %}
+            <button type="submit" class="btn-add-card">В кошик</button>
+        </form>
     </div>
 </div>

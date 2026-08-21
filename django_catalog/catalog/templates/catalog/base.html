@@ -6,11 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}Каталог{% endblock %}</title>
     <link rel="stylesheet" href="{% static 'catalog/css/main.css' %}">
+    {% block extra_css %}{% endblock %}
 </head>
 <body>
     <header class="header">
-        <div class="container">
+        <div class="container" style="display: flex; justify-content: space-between; align-items: center;">
             <a href="/" class="logo">Каталог</a>
+            <a href="{% url 'cart:cart_detail' %}" class="filter-btn">
+                Кошик {% if cart|length > 0 %}<strong>({{ cart|length }})</strong>{% endif %}
+            </a>
         </div>
     </header>
     <main class="main">
