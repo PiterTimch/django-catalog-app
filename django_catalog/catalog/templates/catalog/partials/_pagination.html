@@ -1,17 +1,27 @@
-<div class="pagination">
-    {% if products.has_previous %}
-        <a href="?page={{ products.previous_page_number }}{% if selected_category %}&category={{ selected_category }}{% endif %}{% if per_page %}&per_page={{ per_page }}{% endif %}" class="pagination-link">&laquo;</a>
-    {% endif %}
-
-    {% for num in products.paginator.page_range %}
-        {% if products.number == num %}
-            <span class="pagination-link pagination-link--active">{{ num }}</span>
+{% if products.has_other_pages %}
+<div class="pagination-container">
+    <div class="pagination">
+        {% if products.has_previous %}
+            <a href="?page={{ products.previous_page_number }}{% if selected_category %}&category={{ selected_category }}{% endif %}{% if per_page %}&per_page={{ per_page }}{% endif %}" class="pagination-link">&laquo;</a>
         {% else %}
-            <a href="?page={{ num }}{% if selected_category %}&category={{ selected_category }}{% endif %}{% if per_page %}&per_page={{ per_page }}{% endif %}" class="pagination-link">{{ num }}</a>
+            <span class="pagination-link pagination-link--disabled">&laquo;</span>
         {% endif %}
-    {% endfor %}
 
-    {% if products.has_next %}
-        <a href="?page={{ products.next_page_number }}{% if selected_category %}&category={{ selected_category }}{% endif %}{% if per_page %}&per_page={{ per_page }}{% endif %}" class="pagination-link">&raquo;</a>
-    {% endif %}
+        {% for page_num in page_range %}
+            {% if page_num == products.paginator.ELLIPSIS %}
+                <span class="pagination-link pagination-link--ellipsis">&hellip;</span>
+            {% elif page_num == products.number %}
+                <span class="pagination-link pagination-link--active">{{ page_num }}</span>
+            {% else %}
+                <a href="?page={{ page_num }}{% if selected_category %}&category={{ selected_category }}{% endif %}{% if per_page %}&per_page={{ per_page }}{% endif %}" class="pagination-link">{{ page_num }}</a>
+            {% endif %}
+        {% endfor %}
+
+        {% if products.has_next %}
+            <a href="?page={{ products.next_page_number }}{% if selected_category %}&category={{ selected_category }}{% endif %}{% if per_page %}&per_page={{ per_page }}{% endif %}" class="pagination-link">&raquo;</a>
+        {% else %}
+            <span class="pagination-link pagination-link--disabled">&raquo;</span>
+        {% endif %}
+    </div>
 </div>
+{% endif %}

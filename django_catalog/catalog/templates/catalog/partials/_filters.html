@@ -1,17 +1,42 @@
 <div class="filters-container">
-    <div class="filters">
-        <a href="?{% if per_page %}per_page={{ per_page }}{% endif %}" class="filter-btn {% if not selected_category %}filter-btn--active{% endif %}">Всі</a>
-        {% for cat in categories %}
-            <a href="?category={{ cat.slug }}{% if per_page %}&per_page={{ per_page }}{% endif %}"
-               class="filter-btn {% if selected_category == cat.slug %}filter-btn--active{% endif %}">
-                {{ cat.name }}
-            </a>
-        {% endfor %}
+    <div class="filters-nav">
+        <div class="filters">
+            <a href="?{% if per_page %}per_page={{ per_page }}{% endif %}" class="filter-btn {% if not selected_category %}filter-btn--active{% endif %}">Всі</a>
+            {% for cat in categories %}
+                <a href="?category={{ cat.slug }}{% if per_page %}&per_page={{ per_page }}{% endif %}{% if categories_page.number > 1 %}&cat_page={{ categories_page.number }}{% endif %}"
+                   class="filter-btn {% if selected_category == cat.slug %}filter-btn--active{% endif %}">
+                    {{ cat.name }}
+                </a>
+            {% endfor %}
+        </div>
+
+        {% if categories_page.has_other_pages %}
+            <div class="cat-pagination-row">
+                <div class="cat-pagination">
+                    {% if categories_page.has_previous %}
+                        <a href="?cat_page={{ categories_page.previous_page_number }}{% if selected_category %}&category={{ selected_category }}{% endif %}{% if per_page %}&per_page={{ per_page }}{% endif %}" class="cat-page-btn" title="Попередні категорії">&lsaquo;</a>
+                    {% else %}
+                        <span class="cat-page-btn cat-page-btn--disabled">&lsaquo;</span>
+                    {% endif %}
+
+                    <span class="cat-page-info">{{ categories_page.number }}/{{ categories_page.paginator.num_pages }}</span>
+
+                    {% if categories_page.has_next %}
+                        <a href="?cat_page={{ categories_page.next_page_number }}{% if selected_category %}&category={{ selected_category }}{% endif %}{% if per_page %}&per_page={{ per_page }}{% endif %}" class="cat-page-btn" title="Наступні категорії">&rsaquo;</a>
+                    {% else %}
+                        <span class="cat-page-btn cat-page-btn--disabled">&rsaquo;</span>
+                    {% endif %}
+                </div>
+            </div>
+        {% endif %}
     </div>
 
     <form method="get" class="per-page-form">
         {% if selected_category %}
             <input type="hidden" name="category" value="{{ selected_category }}">
+        {% endif %}
+        {% if categories_page.number > 1 %}
+            <input type="hidden" name="cat_page" value="{{ categories_page.number }}">
         {% endif %}
         <label for="per_page">Товарів на сторінці:</label>
         <select name="per_page" id="per_page" onchange="this.form.submit()">
