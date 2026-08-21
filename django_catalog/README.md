@@ -26,3 +26,11 @@ python -m uv run python manage.py createsuperuser
 ```
 python -m uv run python manage.py runserver
 ```
+
+## Tests
+
+```
+python -m uv run python manage.py test cart
+python -m uv run python manage.py test cart.tests.test_cart
+python -m uv run python manage.py test cart.tests.test_views
+```
