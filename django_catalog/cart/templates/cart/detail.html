@@ -41,15 +41,14 @@
                             {{ item.product.name }}
                         </a>
                     </td>
-                    <td>{{ item.price }} грн.</td>
+                    <td>{{ item.price }} $</td>
                     <td>
                         <form action="{% url 'cart:cart_update' item.product.id %}" method="post" class="cart-qty-form">
                             {% csrf_token %}
-                            <input type="number" name="quantity" value="{{ item.quantity }}" min="1" class="cart-qty-input">
-                            <button type="submit" class="btn-update">Оновити</button>
+                            <input type="number" name="quantity" value="{{ item.quantity }}" min="1" class="cart-qty-input" onchange="this.form.submit()">
                         </form>
                     </td>
-                    <td><strong>{{ item.total_price }} грн.</strong></td>
+                    <td><strong>{{ item.total_price }} $</strong></td>
                     <td>
                         <form action="{% url 'cart:cart_remove' item.product.id %}" method="post">
                             {% csrf_token %}
@@ -63,7 +62,14 @@
 
     <div class="cart-summary">
         <span class="cart-total-label">Загальна вартість:</span>
-        <span class="cart-total-price">{{ cart.get_total_price }} грн.</span>
+        <span class="cart-total-price">{{ cart.get_total_price }} $</span>
+    </div>
+
+    <div class="cart-actions">
+        <form action="{% url 'cart:cart_clear' %}" method="post">
+            {% csrf_token %}
+            <button type="submit" class="btn-clear">Очистити кошик</button>
+        </form>
     </div>
 {% else %}
     <p>Ваш кошик порожній.</p>

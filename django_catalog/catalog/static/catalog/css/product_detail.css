@@ -3,7 +3,7 @@
     gap: 40px;
     background-color: #ffffff;
     border: 1px solid #e0e0e0;
-    border-radius: 4px;
+    border-radius: 6px;
     padding: 30px;
     flex-wrap: wrap;
 }
@@ -20,7 +20,7 @@
     object-fit: contain;
     background-color: #fafafa;
     border: 1px solid #eaeaea;
-    border-radius: 4px;
+    border-radius: 6px;
 }
 
 .product-detail__no-image {
@@ -31,7 +31,7 @@
     align-items: center;
     justify-content: center;
     color: #888;
-    border-radius: 4px;
+    border-radius: 6px;
 }
 
 .product-detail__info {
@@ -64,16 +64,34 @@
     color: #555;
 }
 
-.add-to-cart-btn {
-    padding: 12px 24px;
-    background-color: #333;
-    color: #fff;
-    border: none;
-    border-radius: 4px;
+.cart-qty-form {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 24px;
+}
+
+.cart-qty-input {
+    width: 60px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    text-align: center;
     font-size: 16px;
+}
+
+.add-to-cart-btn {
+    padding: 12px 28px;
+    background-color: #2563eb;
+    color: #ffffff;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: 600;
     cursor: pointer;
+    transition: background-color 0.2s ease;
 }
 
 .add-to-cart-btn:hover {
-    background-color: #555;
+    background-color: #1d4ed8;
 }

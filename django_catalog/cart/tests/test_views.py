@@ -41,6 +41,15 @@ class CartViewsTestCase(TestCase):
         self.assertRedirects(response, reverse("cart:cart_detail"))
         self.assertNotIn(str(self.product.id), self.client.session["cart"])
 
+    def test_cart_clear_view(self):
+        add_url = reverse("cart:cart_add", args=[self.product.id])
+        self.client.post(add_url, {"quantity": 1})
+
+        clear_url = reverse("cart:cart_clear")
+        response = self.client.post(clear_url)
+        self.assertRedirects(response, reverse("cart:cart_detail"))
+        self.assertEqual(self.client.session["cart"], {})
+
     def test_cart_detail_view(self):
         url = reverse("cart:cart_detail")
         response = self.client.get(url)

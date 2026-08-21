@@ -45,6 +45,13 @@ def cart_remove(request, product_id):
     return redirect("cart:cart_detail")
 
 
+@require_POST
+def cart_clear(request):
+    cart = Cart(request)
+    cart.clear()
+    return redirect("cart:cart_detail")
+
+
 def cart_detail(request):
     cart = Cart(request)
     cart.clean_deleted_products()

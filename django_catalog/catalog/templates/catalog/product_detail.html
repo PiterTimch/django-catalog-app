@@ -1,4 +1,5 @@
 {% extends "catalog/base.html" %}
+{% load cart_tags %}
 
 {% block title %}{{ product.name }} - Каталог{% endblock %}
 
@@ -20,6 +21,13 @@
         <p class="product-detail__category">{{ product.category.name }}</p>
         <h1 class="product-detail__name">{{ product.name }}</h1>
         <p class="product-detail__price">{{ product.price }} $</p>
+
+        {% with qty=cart|get_cart_quantity:product %}
+            {% if qty > 0 %}
+                <span class="in-cart-indicator">✓ В кошику ({{ qty }} шт.)</span>
+            {% endif %}
+        {% endwith %}
+
         <div class="product-detail__description">
             <p>{{ product.description }}</p>
         </div>
