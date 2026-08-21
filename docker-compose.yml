@@ -39,6 +39,7 @@ services:
       DB_HOST: db
       DB_PORT: 5432
       ALLOWED_HOSTS: ${ALLOWED_HOSTS}
+      FORCE_SCRIPT_NAME: ${FORCE_SCRIPT_NAME}
     volumes:
       - media_data:/app/media
     command: >

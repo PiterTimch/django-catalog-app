@@ -13,6 +13,7 @@ dependencies = [
     "python-dotenv>=1.2.3",
     "pillow",
     "gunicorn>=23.0.0",
+    "whitenoise>=6.9.0",
 ]
 
 [project.scripts]
