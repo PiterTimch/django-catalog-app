@@ -12,6 +12,7 @@ dependencies = [
     "psycopg[binary]>=3.3.4",
     "python-dotenv>=1.2.3",
     "pillow",
+    "gunicorn>=23.0.0",
 ]
 
 [project.scripts]
