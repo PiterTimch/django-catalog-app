@@ -6,6 +6,42 @@ DEFAULT_PER_PAGE = 4
 PER_PAGE_OPTIONS = [2, 4, 8, 12]
 
 
+def get_custom_elided_page_range(paginator, number, on_each_side=1, on_ends=1):
+    number = int(number)
+    num_pages = paginator.num_pages
+
+    if num_pages <= (on_each_side * 2 + on_ends * 2 + 1):
+        return list(paginator.page_range)
+
+    page_range = []
+
+    # Left end
+    for i in range(1, on_ends + 1):
+        page_range.append(i)
+
+    # Left ellipsis
+    if number - on_each_side > on_ends + 1:
+        page_range.append(paginator.ELLIPSIS)
+
+    # Middle pages
+    start = max(on_ends + 1, number - on_each_side)
+    end = min(num_pages - on_ends, number + on_each_side)
+    for i in range(start, end + 1):
+        if i not in page_range:
+            page_range.append(i)
+
+    # Right ellipsis
+    if number + on_each_side < num_pages - on_ends:
+        page_range.append(paginator.ELLIPSIS)
+
+    # Right end
+    for i in range(num_pages - on_ends + 1, num_pages + 1):
+        if i not in page_range:
+            page_range.append(i)
+
+    return page_range
+
+
 def product_list(request):
     categories = Category.objects.all()
     category_slug = request.GET.get("category")
@@ -23,10 +59,12 @@ def product_list(request):
 
     paginator = Paginator(products, per_page)
     page = paginator.get_page(request.GET.get("page"))
+    page_range = get_custom_elided_page_range(paginator, page.number, on_each_side=1, on_ends=1)
 
     return render(request, "catalog/product_list.html", {
         "categories": categories,
         "products": page,
+        "page_range": page_range,
         "selected_category": category_slug,
         "per_page": per_page,
         "per_page_options": PER_PAGE_OPTIONS,
