@@ -3,6 +3,10 @@
 
 {% block title %}Кошик покупок{% endblock %}
 
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'cart/css/cart.css' %}">
+{% endblock %}
+
 {% block content %}
 <div class="back-link-container">
     <a href="{% url 'catalog:product_list' %}" class="back-link">&larr; Продовжити покупки</a>
