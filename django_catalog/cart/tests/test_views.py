@@ -55,6 +55,28 @@ class CartViewsTestCase(TestCase):
         response = self.client.get(url)
         self.assertEqual(response.status_code, 200)
 
+    def test_cart_add_negative_quantity_is_ignored(self):
+        url = reverse("cart:cart_add", args=[self.product.id])
+        self.client.post(url, {"quantity": -5})
+
+        self.assertNotIn(str(self.product.id), self.client.session.get("cart", {}))
+
+    def test_cart_update_zero_quantity_removes_product(self):
+        add_url = reverse("cart:cart_add", args=[self.product.id])
+        self.client.post(add_url, {"quantity": 2})
+
+        update_url = reverse("cart:cart_update", args=[self.product.id])
+        self.client.post(update_url, {"quantity": 0})
+
+        self.assertNotIn(str(self.product.id), self.client.session["cart"])
+
+    def test_cart_add_same_product_twice_accumulates(self):
+        url = reverse("cart:cart_add", args=[self.product.id])
+        self.client.post(url, {"quantity": 2})
+        self.client.post(url, {"quantity": 3})
+
+        self.assertEqual(self.client.session["cart"][str(self.product.id)]["quantity"], 5)
+
     def test_404_for_non_existent_product(self):
         non_existent_id = 99999
         add_url = reverse("cart:cart_add", args=[non_existent_id])

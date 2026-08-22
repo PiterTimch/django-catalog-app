@@ -82,6 +82,34 @@ class CartTestCase(TestCase):
         self.assertIn(str(self.product2.id), request.session['cart'])
         self.assertEqual(len(cart), 1)
 
+    def test_add_override_quantity(self):
+        request = self._get_request()
+        cart = Cart(request)
+        cart.add(self.product1, quantity=3)
+        cart.add(self.product1, quantity=1, override_quantity=True)
+
+        self.assertEqual(len(cart), 1)
+
+    def test_get_total_price_empty_cart(self):
+        request = self._get_request()
+        cart = Cart(request)
+
+        self.assertEqual(cart.get_total_price(), Decimal("0"))
+
+    def test_update_quantity_on_absent_product_does_nothing(self):
+        request = self._get_request()
+        cart = Cart(request)
+        cart.update_quantity(self.product1, quantity=5)
+
+        self.assertEqual(len(cart), 0)
+
+    def test_remove_absent_product_does_nothing(self):
+        request = self._get_request()
+        cart = Cart(request)
+        cart.remove(self.product1)
+
+        self.assertEqual(len(cart), 0)
+
     def test_clear(self):
         request = self._get_request()
         cart = Cart(request)
