@@ -1,15 +1,16 @@
 from decimal import Decimal
 from catalog.models import Product
+from constants import AppConstants
 
-SESSION_KEY = 'cart'
+_constants = AppConstants.get_instance()
 
 
 class Cart:
     def __init__(self, request):
         self.session = request.session
-        cart = self.session.get(SESSION_KEY)
+        cart = self.session.get(_constants.CART_SESSION_KEY)
         if not cart:
-            cart = self.session[SESSION_KEY] = {}
+            cart = self.session[_constants.CART_SESSION_KEY] = {}
         self.cart = cart
 
     def _validate_quantity(self, quantity):
