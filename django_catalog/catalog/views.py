@@ -1,9 +1,9 @@
 from django.core.paginator import Paginator
 from django.shortcuts import render, get_object_or_404
 from .models import Category, Product
+from constants import AppConstants
 
-DEFAULT_PER_PAGE = 4
-PER_PAGE_OPTIONS = [2, 4, 8, 12]
+_constants = AppConstants.get_instance()
 
 
 def get_custom_elided_page_range(paginator, number, on_each_side=1, on_ends=1):
@@ -49,11 +49,11 @@ def product_list(request):
     categories_page = cat_paginator.get_page(request.GET.get("cat_page", 1))
 
     try:
-        per_page = int(request.GET.get("per_page", DEFAULT_PER_PAGE))
-        if per_page not in PER_PAGE_OPTIONS:
-            per_page = DEFAULT_PER_PAGE
+        per_page = int(request.GET.get("per_page", _constants.DEFAULT_PER_PAGE))
+        if per_page not in _constants.PER_PAGE_OPTIONS:
+            per_page = _constants.DEFAULT_PER_PAGE
     except (ValueError, TypeError):
-        per_page = DEFAULT_PER_PAGE
+        per_page = _constants.DEFAULT_PER_PAGE
 
     products = Product.objects.select_related("category").all()
     if category_slug:
@@ -68,7 +68,7 @@ def product_list(request):
         "categories_page": categories_page,
         "selected_category": category_slug,
         "per_page": per_page,
-        "per_page_options": PER_PAGE_OPTIONS,
+        "per_page_options": _constants.PER_PAGE_OPTIONS,
         "products": page,
         "page_range": page_range,
     })
