@@ -1,6 +1,14 @@
 # Django Catalog App
 
+## Prerequisites
+Rename .env.example to .env.development and update the environment variables inside to match your local database settings.
+
 ## Startup
+
+0. Move to directory
+```
+cd .\django_catalog\
+```
 
 1. Create DB:
 ```
