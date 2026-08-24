@@ -19,7 +19,7 @@ SEEDING_DIR = Path(__file__).resolve().parent
 def seed_categories():
     with open(SEEDING_DIR / "json" / "categories.json", encoding="utf-8") as f:
         for data in json.load(f):
-            Category.objects.get_or_create(
+            Category.objects.update_or_create(
                 slug=data["slug"],
                 defaults={"name": data["name"]},
             )
@@ -29,7 +29,7 @@ def seed_products():
     with open(SEEDING_DIR / "json" / "products.json", encoding="utf-8") as f:
         for data in json.load(f):
             category = Category.objects.get(slug=data["category_slug"])
-            product, created = Product.objects.get_or_create(
+            product, created = Product.objects.update_or_create(
                 slug=data["slug"],
                 defaults={
                     "name": data["name"],
