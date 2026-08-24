@@ -31,7 +31,7 @@
                 <tr>
                     <td>
                         {% if item.product.image %}
-                            <img src="{{ item.product.image.url }}" alt="{{ item.product.name }}" class="cart-item-img">
+                            <img src="{{ item.product.image_small_url }}" alt="{{ item.product.name }}" class="cart-item-img">
                         {% else %}
                             <div class="cart-item-no-img">Немає фото</div>
                         {% endif %}

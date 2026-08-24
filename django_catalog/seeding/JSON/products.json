@@ -3,31 +3,127 @@
     "name": "Acer Aspire 5",
     "slug": "acer-aspire-5",
     "category_slug": "laptops",
-    "description": "Powerful everyday laptop with AMD Ryzen processor.",
+    "description": "Потужний повсякденний ноутбук із процесором AMD Ryzen.",
     "price": 599.99,
     "image_name": "aceraspire5.jpg"
   },
   {
-    "name": "iPhone 17",
+    "name": "ASUS VivoBook",
+    "slug": "asus-vivobook",
+    "category_slug": "laptops",
+    "description": "Стильний та легкий ноутбук для роботи й навчання.",
+    "price": 649.99,
+    "image_name": "asusvivobook.jpg"
+  },
+  {
+    "name": "Dell Inspiron 14",
+    "slug": "dell-inspiron-14",
+    "category_slug": "laptops",
+    "description": "Компактний 14-дюймовий ноутбук із чудовою автономністю.",
+    "price": 729.99,
+    "image_name": "dellinspiron14.jpg"
+  },
+  {
+    "name": "HP Laptop 17",
+    "slug": "hp-laptop-17",
+    "category_slug": "laptops",
+    "description": "Великий 17-дюймовий ноутбук для комфортної мультимедійної роботи.",
+    "price": 699.99,
+    "image_name": "hplaptop17.jpg"
+  },
+  {
+    "name": "Apple MacBook",
+    "slug": "macbook",
+    "category_slug": "laptops",
+    "description": "Елегантний та високопродуктивний ноутбук Apple.",
+    "price": 1299.99,
+    "image_name": "macbook.jpg"
+  },
+  {
+    "name": "Apple iPhone 13",
+    "slug": "iphone-13",
+    "category_slug": "smartphones",
+    "description": "Надійний смартфон Apple із чудовою системою двох камер.",
+    "price": 599.99,
+    "image_name": "iphone13.jpg"
+  },
+  {
+    "name": "Apple iPhone 14",
+    "slug": "iphone-14",
+    "category_slug": "smartphones",
+    "description": "Сучасний смартфон із покращеною автономністю та захистом.",
+    "price": 699.99,
+    "image_name": "iphone14.webp"
+  },
+  {
+    "name": "Apple iPhone 15",
+    "slug": "iphone-15",
+    "category_slug": "smartphones",
+    "description": "Смартфон із роз’ємом USB-C та вирізом Dynamic Island.",
+    "price": 799.99,
+    "image_name": "iphone15.jpg"
+  },
+  {
+    "name": "Apple iPhone 16",
+    "slug": "iphone-16",
+    "category_slug": "smartphones",
+    "description": "Смартфон нового покоління з підтримкою штучного інтелекту Apple Intelligence.",
+    "price": 899.99,
+    "image_name": "iphone16.jpg"
+  },
+  {
+    "name": "Apple iPhone 17",
     "slug": "iphone-17",
     "category_slug": "smartphones",
-    "description": "The next generation of iPhone.",
+    "description": "Флагманський смартфон наступного покоління від Apple.",
     "price": 1099.99,
     "image_name": "iphone17.jpg"
   },
   {
-    "name": "MacBook",
-    "slug": "macbook",
-    "category_slug": "laptops",
-    "description": "Sleek and efficient Apple MacBook.",
-    "price": 1299.99,
-    "image_name": "macbook.jpg"
+    "name": "Samsung Galaxy S26",
+    "slug": "samsung-galaxy-s26",
+    "category_slug": "smartphones",
+    "description": "Флагманський смартфон Samsung із передовою камерою та розширеними можливостями ШІ.",
+    "price": 949.99,
+    "image_name": "samsungs26.jpg"
+  },
+  {
+    "name": "Nvidia GeForce RTX 5050",
+    "slug": "nvidia-geforce-rtx-5050",
+    "category_slug": "graphics-cards",
+    "description": "Доступна відеокарта нового покоління для ігор у 1080p.",
+    "price": 299.99,
+    "image_name": "rtx5050.jpg"
+  },
+  {
+    "name": "Nvidia GeForce RTX 5060",
+    "slug": "nvidia-geforce-rtx-5060",
+    "category_slug": "graphics-cards",
+    "description": "Збалансована ігрова відеокарта з підтримкою трасування променів.",
+    "price": 449.99,
+    "image_name": "rtx5060.jpg"
+  },
+  {
+    "name": "Nvidia GeForce RTX 5070",
+    "slug": "nvidia-geforce-rtx-5070",
+    "category_slug": "graphics-cards",
+    "description": "Потужна відеокарта для геймінгу в роздільній здатності 1440p.",
+    "price": 649.99,
+    "image_name": "rtx5070.jpg"
+  },
+  {
+    "name": "Nvidia GeForce RTX 5080",
+    "slug": "nvidia-geforce-rtx-5080",
+    "category_slug": "graphics-cards",
+    "description": "Високопродуктивна відеокарта для ультра-налаштувань та 4K геймінгу.",
+    "price": 1199.99,
+    "image_name": "rtx5080.jpg"
   },
   {
     "name": "Nvidia GeForce RTX 5090",
     "slug": "nvidia-geforce-rtx-5090",
     "category_slug": "graphics-cards",
-    "description": "Flagship next-gen gaming graphics card.",
+    "description": "Флагманська ігрова відеокарта нового покоління з максимальною продуктивністю.",
     "price": 1999.99,
     "image_name": "rtx5090.jpg"
   },
@@ -35,16 +131,8 @@
     "name": "AMD Radeon RX 9070",
     "slug": "amd-radeon-rx-9070",
     "category_slug": "graphics-cards",
-    "description": "High-performance graphics card for gaming.",
+    "description": "Потужна графічна карта AMD для ігор та важких обчислень.",
     "price": 899.99,
     "image_name": "rx9070.jpg"
-  },
-  {
-    "name": "Samsung Galaxy S26",
-    "slug": "samsung-galaxy-s26",
-    "category_slug": "smartphones",
-    "description": "Flagship Samsung smartphone with advanced camera system.",
-    "price": 949.99,
-    "image_name": "samsungs26.jpg"
   }
 ]

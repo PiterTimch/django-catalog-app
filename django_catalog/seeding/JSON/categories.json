@@ -1,14 +1,14 @@
 [
   {
-    "name": "Smartphones",
+    "name": "Смартфони",
     "slug": "smartphones"
   },
   {
-    "name": "Laptops",
+    "name": "Ноутбуки",
     "slug": "laptops"
   },
   {
-    "name": "Graphics Cards",
+    "name": "Відеокарти",
     "slug": "graphics-cards"
   }
 ]
