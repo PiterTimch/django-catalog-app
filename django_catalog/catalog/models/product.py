@@ -1,6 +1,9 @@
 from django.db import models
 from .category import Category
-from catalog.utils import product_image_path
+from catalog.utils import product_image_path, process_product_image, get_sized_image_url
+from constants import AppConstants
+
+_constants = AppConstants.get_instance()
 
 
 class Product(models.Model):
@@ -13,3 +16,16 @@ class Product(models.Model):
 
     def __str__(self):
         return self.name
+
+    def save(self, *args, **kwargs):
+        super().save(*args, **kwargs)
+        if self.image:
+            process_product_image(self.image)
+
+    @property
+    def image_small_url(self):
+        return get_sized_image_url(self.image, _constants.IMAGE_SIZE_SMALL)
+
+    @property
+    def image_large_url(self):
+        return get_sized_image_url(self.image, _constants.IMAGE_SIZE_LARGE)

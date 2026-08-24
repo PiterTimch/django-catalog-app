@@ -2,7 +2,7 @@
 <div class="product-card">
     <a href="{% url 'catalog:product_detail' product.slug %}">
         {% if product.image %}
-            <img class="product-card__image" src="{{ product.image.url }}" alt="{{ product.name }}">
+            <img class="product-card__image" src="{{ product.image_small_url }}" alt="{{ product.name }}">
         {% else %}
             <div class="product-card__no-image">Немає фото</div>
         {% endif %}
